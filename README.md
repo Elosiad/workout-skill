@@ -16,39 +16,41 @@ This project contains an Agent skill (`SKILL.md`) that enforces a strict two-pha
 ## 📖 Example (示例演示)
 
 **User Prompt:**
-> "Prove that if $f: X \to Y$ is an injective linear map, its kernel is $\{0\}$. Use workout."
+> "Prove the First Isomorphism Theorem for vector spaces: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \operatorname{Im}(f)$. Use workout."
 
 **Agent Response (Snippet):**
 
 ### 1. Standard Solution
 **Proof:**
-Let $f: X \to Y$ be an injective linear map. Let $x \in \ker(f)$. 
-By definition of the kernel, $f(x) = 0$. 
-Since $f$ is a linear map, we also know that $f(0) = 0$.
-Thus, $f(x) = f(0)$.
-Because $f$ is injective, $f(x) = f(0)$ implies $x = 0$.
-Therefore, $\ker(f) = \{0\}$. $\blacksquare$
+Let $f: V \to W$ be a linear map. We define a map $\bar{f}: V/\ker(f) \to \operatorname{Im}(f)$ by $\bar{f}(v + \ker(f)) = f(v)$.
+*Step 1: Well-definedness.* Suppose $v_1 + \ker(f) = v_2 + \ker(f)$. Then $v_1 - v_2 \in \ker(f)$, meaning $f(v_1 - v_2) = 0$. By linearity, $f(v_1) = f(v_2)$. Thus, $\bar{f}$ is well-defined.
+*Step 2: Injectivity.* Suppose $\bar{f}(v + \ker(f)) = 0$. Then $f(v) = 0$, so $v \in \ker(f)$. This means the equivalence class $v + \ker(f)$ is the zero class in $V/\ker(f)$. Thus, $\bar{f}$ is injective.
+*Step 3: Surjectivity.* For any $w \in \operatorname{Im}(f)$, there exists $v \in V$ such that $f(v) = w$. By definition, $\bar{f}(v + \ker(f)) = f(v) = w$, so $\bar{f}$ is surjective.
+Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \operatorname{Im}(f)$. $\blacksquare$
 
 ### 2. Workout Breakdown
 #### 1. 宏观拆解 (Macro Breakdown)
-- **Problem Statement**: Prove that if $f$ is injective, then $\ker(f) = \{0\}$.
-- **Decomposition**: 这是一个非常直接的基础证明，不需要复杂的拆分，我们只需证明集合 $\ker(f)$ 中仅包含元素 $0$。
+- **Problem Statement**: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \operatorname{Im}(f)$.
+- **Decomposition**: 这是一个经典的结构同构证明。数学中要证明两个空间同构，标准套路是“人工架桥”（构造一个映射），然后证明这座桥是一座“无损双向桥”。因此我们将问题拆解为 3 个必备检查项：
 - **Sub-problems List**: 
-  1. Show that any element in $\ker(f)$ must be $0$.
+  1. 凭空构造一个映射 $\bar{f}$，并证明它没有逻辑漏洞（**Well-definedness**）。
+  2. 证明这座桥不会把不同的出发点挤到同一个目的地（**Injectivity** 单射）。
+  3. 证明这座桥能覆盖所有的目的地（**Surjectivity** 满射）。
 
 #### 2. Breakdown 1
-- **严谨表述 (Rigorous Statement)**: Let $x \in \ker(f)$, prove $x = 0$.
+- **严谨表述 (Rigorous Statement)**: Define $\bar{f}(v + \ker(f)) = f(v)$ and prove it is well-defined.
 - **Workout 拆解**:
   - **条件与结论 (Conditions & Target)**: 
-    - *Condition*: $f$ is injective, and $x \in \ker(f)$.
-    - *Target*: Prove $x = 0$.
+    - *Condition*: Two inputs look different but are actually the same equivalence class: $v_1 + \ker(f) = v_2 + \ker(f)$.
+    - *Target*: Their outputs must be strictly equal: $f(v_1) = f(v_2)$.
   - **等价转化 (Equivalent Translation)**: 
-    - $x \in \ker(f)$ 等价于核心方程：**$f(x) = 0$**。
-    - $f$ is injective (单射) 的等价物理意义是：**只要两个输出相等，那么它们的输入必须相等**（即 $f(a) = f(b) \implies a = b$）。
+    - 等式的左边（商空间条件）$v_1 + \ker(f) = v_2 + \ker(f)$ 等价于：它们俩的差掉进了用来作商的黑洞，即 **$v_1 - v_2 \in \ker(f)$**。
+    - 进一步翻译“掉进核里”的物理意义：**$f(v_1 - v_2) = 0$**。
   - **逻辑搭桥 (Logical Bridging & Theorems)**: 
-    我们手里有 $f(x) = 0$。想要利用单射的性质（$f(a)=f(b)$），我们必须把等式右边的 $0$ 也写成某个 $f(\text{something})$ 的形式。
-    线性代数第一定律：**线性映射一定把 0 映射到 0**（即 $f(0) = 0$）。
-    桥梁瞬间搭好：$f(x) = 0 = f(0)$。利用单射的等价性质，强制推出输入端相等：$x = 0$。
+    我们手里有 $f(v_1 - v_2) = 0$，想要得到 $f(v_1) = f(v_2)$。
+    直接利用映射的核心性质 **Linearity (线性分配律)** 拆开括号：$f(v_1) - f(v_2) = 0$，移项后瞬间达成目标！
+    
+*(Breakdown 2 and 3 follow the same methodology...)*
 
 ## 🚀 Usage (使用指南)
 ### Installation
