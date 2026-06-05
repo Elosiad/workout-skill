@@ -33,7 +33,7 @@ Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \mathrm
 - **Problem Statement**: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \mathrm{Im}(f)$.
 - **Decomposition**: 这是一个经典的结构同构证明。数学中要证明两个空间同构，标准套路是“人工架桥”（构造一个映射），然后证明这座桥是一座“无损双向桥”。因此我们将问题拆解为 3 个必备检查项：
 - **Sub-problems List**: 
-  1. 凭空构造一个映射 $\bar{f}$，并证明它没有逻辑漏洞（**Well-definedness**）。
+  1. 凭空构造一个映射 $\bar{f}$ ，并证明它没有逻辑漏洞（**Well-definedness**）。
   2. 证明这座桥不会把不同的出发点挤到同一个目的地（**Injectivity** 单射）。
   3. 证明这座桥能覆盖所有的目的地（**Surjectivity** 满射）。
 
@@ -44,37 +44,37 @@ Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \mathrm
     - *Condition*: Two inputs look different but are actually the same equivalence class: $v_1 + \ker(f) = v_2 + \ker(f)$.
     - *Target*: Their outputs must be strictly equal: $f(v_1) = f(v_2)$.
   - **等价转化 (Equivalent Translation)**: 
-    - 等式的左边（商空间条件）$v_1 + \ker(f) = v_2 + \ker(f)$ 等价于：它们俩的差掉进了用来作商的黑洞，即 **$v_1 - v_2 \in \ker(f)$**。
-    - 进一步翻译“掉进核里”的物理意义：**$f(v_1 - v_2) = 0$**。
+    - 等式的左边（商空间条件） $v_1 + \ker(f) = v_2 + \ker(f)$ 等价于：它们俩的差掉进了用来作商的黑洞，即 **$v_1 - v_2 \in \ker(f)$** 。
+    - 进一步翻译“掉进核里”的物理意义： **$f(v_1 - v_2) = 0$** 。
   - **逻辑搭桥 (Logical Bridging & Theorems)**: 
-    我们手里有 $f(v_1 - v_2) = 0$，想要得到 $f(v_1) = f(v_2)$。
-    直接利用映射的核心性质 **Linearity (线性分配律)** 拆开括号：$f(v_1) - f(v_2) = 0$，移项后瞬间达成目标！
-    
+    我们手里有 $f(v_1 - v_2) = 0$ ，想要得到 $f(v_1) = f(v_2)$ 。
+    直接利用映射的核心性质 **Linearity (线性分配律)** 拆开括号： $f(v_1) - f(v_2) = 0$ ，移项后瞬间达成目标！
+
 #### 3. Breakdown 2
 - **严谨表述 (Rigorous Statement)**: Prove that $\bar{f}$ is injective.
 - **Workout 拆解**:
   - **条件与结论 (Conditions & Target)**: 
-    - *Condition*: 假设某元素的输出为零向量：$\bar{f}(v + \ker(f)) = 0$。
-    - *Target*: 证明该输入必定是商空间里的零等价类，即 $v + \ker(f) = \ker(f)$（等价于证明 $v \in \ker(f)$）。
+    - *Condition*: 假设某元素的输出为零向量： $\bar{f}(v + \ker(f)) = 0$ 。
+    - *Target*: 证明该输入必定是商空间里的零等价类，即 $v + \ker(f) = \ker(f)$ （等价于证明 $v \in \ker(f)$ ）。
   - **等价转化 (Equivalent Translation)**: 
-    - 根据我们对 $\bar{f}$ 的定义，条件 $\bar{f}(v + \ker(f)) = 0$ 直接翻译为最基础的等式：**$f(v) = 0$**。
+    - 根据我们对 $\bar{f}$ 的定义，条件 $\bar{f}(v + \ker(f)) = 0$ 直接翻译为最基础的等式： **$f(v) = 0$** 。
   - **逻辑搭桥 (Logical Bridging & Theorems)**: 
-    我们手里攥着 $f(v) = 0$。但等等... 这不就是核（Kernel）的绝对定义吗？！
-    它直接说明了 **$v \in \ker(f)$**。
+    我们手里攥着 $f(v) = 0$ 。但等等... 这不就是核（Kernel）的绝对定义吗？！
+    它直接说明了 **$v \in \ker(f)$** 。
     而根据商空间的性质，如果一个元素属于分母空间，那么它所属的等价类就是零。所以 $v + \ker(f)$ 就是商空间里的零元素。一发入魂！
 
 #### 4. Breakdown 3
 - **严谨表述 (Rigorous Statement)**: Prove that $\bar{f}$ is surjective onto $\mathrm{Im}(f)$.
 - **Workout 拆解**:
   - **条件与结论 (Conditions & Target)**: 
-    - *Condition*: 任意选取目标空间中的一个元素 $w \in \mathrm{Im}(f)$。
-    - *Target*: 证明能够在地基里找到一个商空间元素 $X$，使得 $\bar{f}(X) = w$。
+    - *Condition*: 任意选取目标空间中的一个元素 $w \in \mathrm{Im}(f)$ 。
+    - *Target*: 证明能够在地基里找到一个商空间元素 $X$ ，使得 $\bar{f}(X) = w$ 。
   - **等价转化 (Equivalent Translation)**: 
-    - $w \in \mathrm{Im}(f)$ 的字面意思是“它在像集里”。翻译成大白话就是：它是某个源空间元素的“影子”。必定存在一个肉身 $v \in V$，使得 **$f(v) = w$**。
+    - $w \in \mathrm{Im}(f)$ 的字面意思是“它在像集里”。翻译成大白话就是：它是某个源空间元素的“影子”。必定存在一个肉身 $v \in V$ ，使得 **$f(v) = w$** 。
   - **逻辑搭桥 (Logical Bridging & Theorems)**: 
-    我们要找一个能精准命中 $w$ 的输入 $X$。
-    既然我们已经知道肉身 $v$ 能精准命中 $w$，我们直接用这个 $v$ 披上商空间的马甲，构造等价类 **$X = v + \ker(f)$**！
-    丢进桥梁测试一下：$\bar{f}(v + \ker(f)) = f(v) = w$。指哪打哪，满射得证！
+    我们要找一个能精准命中 $w$ 的输入 $X$ 。
+    既然我们已经知道肉身 $v$ 能精准命中 $w$ ，我们直接用这个 $v$ 披上商空间的马甲，构造等价类 **$X = v + \ker(f)$** ！
+    丢进桥梁测试一下： $\bar{f}(v + \ker(f)) = f(v) = w$ 。指哪打哪，满射得证！
 
 ## 🚀 Usage (使用指南)
 ### Installation
