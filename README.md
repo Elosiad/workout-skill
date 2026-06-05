@@ -7,10 +7,48 @@ This project contains an Agent skill (`SKILL.md`) that enforces a strict two-pha
 1. **Standard Solution (English)**: A formal, publication-ready mathematical proof.
 2. **Workout Breakdown (Chinese)**: A reverse-engineered, target-driven breakdown of the proof. It translates abstract mathematical conditions into equivalent, connectable forms and highlights the logical bridges and theorems used.
 
-本项目包含一个专属的 Agent 技能配置文件。它的核心理念是将“冰冷严谨的数学答案”与“动机驱动的推导过程”剥离开来。它不仅提供可以直接写到考卷上的全英文标准解答，还会在随后用全中文详细拆解：
-- 如何把大问题拆成小问题？
+本项目包含一个专属的 Agent 技能配置文件。它的核心理念是将“冰冷严谨的数学答案”与“动机驱动的推导过程”剥离开来。
+大多数数学教材和标准答案都会直接把最巧妙的“神仙构造”怼到读者脸上，让人产生“这到底是怎么想出来的？”的绝望感。而这个 Workout 技能，不仅提供可以直接写到考卷上的全英文标准解答，还会在随后用全中文详细拆解解题背后的心路历程：
+- 如何把大问题拆解成小问题？
 - 为什么要往这个方向想？
-- 泛性质、同构定理等“桥梁”是如何恰好连接已知条件与目标的？
+- 如何把抽象干瘪的条件转化为容易搭桥的等价“大白话”？
+
+## 📖 Example (示例演示)
+
+**User Prompt:**
+> "Prove that if $f: X \to Y$ is an injective linear map, its kernel is $\{0\}$. Use workout."
+
+**Agent Response (Snippet):**
+
+### 1. Standard Solution
+**Proof:**
+Let $f: X \to Y$ be an injective linear map. Let $x \in \ker(f)$. 
+By definition of the kernel, $f(x) = 0$. 
+Since $f$ is a linear map, we also know that $f(0) = 0$.
+Thus, $f(x) = f(0)$.
+Because $f$ is injective, $f(x) = f(0)$ implies $x = 0$.
+Therefore, $\ker(f) = \{0\}$. $\blacksquare$
+
+### 2. Workout Breakdown
+#### 1. 宏观拆解 (Macro Breakdown)
+- **Problem Statement**: Prove that if $f$ is injective, then $\ker(f) = \{0\}$.
+- **Decomposition**: 这是一个非常直接的基础证明，不需要复杂的拆分，我们只需证明集合 $\ker(f)$ 中仅包含元素 $0$。
+- **Sub-problems List**: 
+  1. Show that any element in $\ker(f)$ must be $0$.
+
+#### 2. Breakdown 1
+- **严谨表述 (Rigorous Statement)**: Let $x \in \ker(f)$, prove $x = 0$.
+- **Workout 拆解**:
+  - **条件与结论 (Conditions & Target)**: 
+    - *Condition*: $f$ is injective, and $x \in \ker(f)$.
+    - *Target*: Prove $x = 0$.
+  - **等价转化 (Equivalent Translation)**: 
+    - $x \in \ker(f)$ 等价于核心方程：**$f(x) = 0$**。
+    - $f$ is injective (单射) 的等价物理意义是：**只要两个输出相等，那么它们的输入必须相等**（即 $f(a) = f(b) \implies a = b$）。
+  - **逻辑搭桥 (Logical Bridging & Theorems)**: 
+    我们手里有 $f(x) = 0$。想要利用单射的性质（$f(a)=f(b)$），我们必须把等式右边的 $0$ 也写成某个 $f(\text{something})$ 的形式。
+    线性代数第一定律：**线性映射一定把 0 映射到 0**（即 $f(0) = 0$）。
+    桥梁瞬间搭好：$f(x) = 0 = f(0)$。利用单射的等价性质，强制推出输入端相等：$x = 0$。
 
 ## 🚀 Usage (使用指南)
 ### Installation
