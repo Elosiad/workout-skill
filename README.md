@@ -16,21 +16,21 @@ This project contains an Agent skill (`SKILL.md`) that enforces a strict two-pha
 ## 📖 Example (示例演示)
 
 **User Prompt:**
-> "Prove the First Isomorphism Theorem for vector spaces: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \operatorname{Im}(f)$. Use workout."
+> "Prove the First Isomorphism Theorem for vector spaces: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \mathrm{Im}(f)$. Use workout."
 
 **Agent Response (Snippet):**
 
 ### 1. Standard Solution
 **Proof:**
-Let $f: V \to W$ be a linear map. We define a map $\bar{f}: V/\ker(f) \to \operatorname{Im}(f)$ by $\bar{f}(v + \ker(f)) = f(v)$.
+Let $f: V \to W$ be a linear map. We define a map $\bar{f}: V/\ker(f) \to \mathrm{Im}(f)$ by $\bar{f}(v + \ker(f)) = f(v)$.
 *Step 1: Well-definedness.* Suppose $v_1 + \ker(f) = v_2 + \ker(f)$. Then $v_1 - v_2 \in \ker(f)$, meaning $f(v_1 - v_2) = 0$. By linearity, $f(v_1) = f(v_2)$. Thus, $\bar{f}$ is well-defined.
 *Step 2: Injectivity.* Suppose $\bar{f}(v + \ker(f)) = 0$. Then $f(v) = 0$, so $v \in \ker(f)$. This means the equivalence class $v + \ker(f)$ is the zero class in $V/\ker(f)$. Thus, $\bar{f}$ is injective.
-*Step 3: Surjectivity.* For any $w \in \operatorname{Im}(f)$, there exists $v \in V$ such that $f(v) = w$. By definition, $\bar{f}(v + \ker(f)) = f(v) = w$, so $\bar{f}$ is surjective.
-Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \operatorname{Im}(f)$. $\blacksquare$
+*Step 3: Surjectivity.* For any $w \in \mathrm{Im}(f)$, there exists $v \in V$ such that $f(v) = w$. By definition, $\bar{f}(v + \ker(f)) = f(v) = w$, so $\bar{f}$ is surjective.
+Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \mathrm{Im}(f)$. $\blacksquare$
 
 ### 2. Workout Breakdown
 #### 1. 宏观拆解 (Macro Breakdown)
-- **Problem Statement**: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \operatorname{Im}(f)$.
+- **Problem Statement**: Let $f: V \to W$ be a linear map. Prove that $V/\ker(f) \cong \mathrm{Im}(f)$.
 - **Decomposition**: 这是一个经典的结构同构证明。数学中要证明两个空间同构，标准套路是“人工架桥”（构造一个映射），然后证明这座桥是一座“无损双向桥”。因此我们将问题拆解为 3 个必备检查项：
 - **Sub-problems List**: 
   1. 凭空构造一个映射 $\bar{f}$，并证明它没有逻辑漏洞（**Well-definedness**）。
