@@ -50,7 +50,31 @@ Since $\bar{f}$ is a well-defined bijective linear map, $V/\ker(f) \cong \mathrm
     我们手里有 $f(v_1 - v_2) = 0$，想要得到 $f(v_1) = f(v_2)$。
     直接利用映射的核心性质 **Linearity (线性分配律)** 拆开括号：$f(v_1) - f(v_2) = 0$，移项后瞬间达成目标！
     
-*(Breakdown 2 and 3 follow the same methodology...)*
+#### 3. Breakdown 2
+- **严谨表述 (Rigorous Statement)**: Prove that $\bar{f}$ is injective.
+- **Workout 拆解**:
+  - **条件与结论 (Conditions & Target)**: 
+    - *Condition*: 假设某元素的输出为零向量：$\bar{f}(v + \ker(f)) = 0$。
+    - *Target*: 证明该输入必定是商空间里的零等价类，即 $v + \ker(f) = \ker(f)$（等价于证明 $v \in \ker(f)$）。
+  - **等价转化 (Equivalent Translation)**: 
+    - 根据我们对 $\bar{f}$ 的定义，条件 $\bar{f}(v + \ker(f)) = 0$ 直接翻译为最基础的等式：**$f(v) = 0$**。
+  - **逻辑搭桥 (Logical Bridging & Theorems)**: 
+    我们手里攥着 $f(v) = 0$。但等等... 这不就是核（Kernel）的绝对定义吗？！
+    它直接说明了 **$v \in \ker(f)$**。
+    而根据商空间的性质，如果一个元素属于分母空间，那么它所属的等价类就是零。所以 $v + \ker(f)$ 就是商空间里的零元素。一发入魂！
+
+#### 4. Breakdown 3
+- **严谨表述 (Rigorous Statement)**: Prove that $\bar{f}$ is surjective onto $\mathrm{Im}(f)$.
+- **Workout 拆解**:
+  - **条件与结论 (Conditions & Target)**: 
+    - *Condition*: 任意选取目标空间中的一个元素 $w \in \mathrm{Im}(f)$。
+    - *Target*: 证明能够在地基里找到一个商空间元素 $X$，使得 $\bar{f}(X) = w$。
+  - **等价转化 (Equivalent Translation)**: 
+    - $w \in \mathrm{Im}(f)$ 的字面意思是“它在像集里”。翻译成大白话就是：它是某个源空间元素的“影子”。必定存在一个肉身 $v \in V$，使得 **$f(v) = w$**。
+  - **逻辑搭桥 (Logical Bridging & Theorems)**: 
+    我们要找一个能精准命中 $w$ 的输入 $X$。
+    既然我们已经知道肉身 $v$ 能精准命中 $w$，我们直接用这个 $v$ 披上商空间的马甲，构造等价类 **$X = v + \ker(f)$**！
+    丢进桥梁测试一下：$\bar{f}(v + \ker(f)) = f(v) = w$。指哪打哪，满射得证！
 
 ## 🚀 Usage (使用指南)
 ### Installation
